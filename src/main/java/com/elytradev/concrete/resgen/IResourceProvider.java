@@ -28,16 +28,24 @@
 
 package com.elytradev.concrete.resgen;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import java.io.InputStream;
 
-import javax.annotation.Nullable;
+public interface IResourceProvider {
 
-public interface IResourceHolder {
+	/**
+	 * Can this provider provide a resource for the given name?
+	 *
+	 * @param name the resource name.
+	 * @return true if the required resource can be provided, false otherwise.
+	 */
+	boolean canProvide(String name);
 
-	@Nullable
-	@SideOnly(Side.CLIENT)
-	ResourceLocation getResource(EnumResourceType resourceType, int meta);
+	/**
+	 * Provides an input stream for the given resource name.
+	 *
+	 * @param name the resource name
+	 * @return the input stream for the specified resource.
+	 */
+	InputStream provide(String name);
 
 }
