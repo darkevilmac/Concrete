@@ -77,7 +77,7 @@ public class ConcreteResourcePack extends AbstractResourcePack {
 
 	public AbstractResourcePack realResourcePack;
 	public String modID;
-	public List<IResourceProvider> providers;
+	public List<ResourceProvider> providers;
 
 	/**
 	 * Create a ConcreteResourcePack for the specified mod, will auto gen simplemodels if you lack a blockstate or model file.
@@ -173,7 +173,7 @@ public class ConcreteResourcePack extends AbstractResourcePack {
 
 	@Override
 	public boolean hasResourceName(String name) {
-		for (IResourceProvider provider : providers) {
+		for (ResourceProvider provider : providers) {
 			if (provider.canProvide(name))
 				return true;
 		}
